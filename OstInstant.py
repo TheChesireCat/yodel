@@ -34,11 +34,15 @@ def listSongs(query):
     names=[]
     for song in soup.findAll("div", {"id" : re.compile('sn[0-9]*')}):
         text = song.contents
-        name = ''
+        name_list = []
+        name_list.append(i[0])
+        name=''
         for i in text:
             if isinstance(i,BeautifulSoup.Tag):
 		        name+=i.text
             elif isinstance(i,BeautifulSoup.NavigableString):
 		        name+=str(i)
-        names.append(name)
+        name_list.append(name)
+        print "Title : ",name_list[0],"\nDescription : \n",name_list[1]
+        names.append(name_list)
     return names
