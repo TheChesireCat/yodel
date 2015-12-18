@@ -1,6 +1,10 @@
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
+import re
 import requests
 from BeautifulSoup import BeautifulSoup as bs
-import sys
+import BeautifulSoup
 if (sys.version_info > (3,0)):
     from urllib.request import urlopen
     from urllib.parse import quote_plus as qp
@@ -20,5 +24,21 @@ def extractMovieUrl(query):
     link = result[link_start:link_end]
     return link
 
-def listSongs(link):
-    url =
+def listSongs(query):
+    mov_url=extractMovieUrl(query)
+    print "URL : ",mov_url
+    url = mov_url + "soundtrack"
+    req = requests.get(url)
+    result = req.content
+    soup = bs(result)
+    names=[]
+    for song in soup.findAll("div", {"id" : re.compile('sn[0-9]*')}):
+        text = song.contents
+        name = ''
+        for i in text:
+            if isinstance(i,BeautifulSoup.Tag):
+		        name+=i.text
+            elif isinstance(i,BeautifulSoup.NavigableString):
+		        name+=str(i)
+        names.append(name)
+    return names
