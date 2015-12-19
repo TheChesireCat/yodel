@@ -95,7 +95,7 @@ def searchFor(query,text,reg):
     query+=' '
     r = re.search(reg,text)
     if r is not None:
-        query+=re.sub('\(.*\)','',r.group(1).encode('utf-8'))    
+        query+=re.sub('\(.*\)','',r.group(1).encode('utf-8'))
     return query
 
 

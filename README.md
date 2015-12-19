@@ -2,10 +2,10 @@
 
 Download the entire soundtrack of any movie :man_with_turban:
 
-Yes, it's that simple.
 
 ```bash
-$ yodel "Me and Earl and The Dying Girl"
+$ yodel Me and Earl and The Dying Girl
 ```
+Yes, it's that simple.
 
 <sup><sub>Made with ♥️ by Ankit Ramakrishnan</sub></sup>
