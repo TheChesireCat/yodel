@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import re
+from colorama import init
+from termcolor import colored
+init()
 import sys
 import requests
 from BeautifulSoup import BeautifulSoup as bs
@@ -13,7 +16,7 @@ else:
     from urllib import quote_plus as qp
 goog_url = "http://www.google.com/search?q="
 you_url="https://www.youtube.com/results?search_query="
-
+debug=False
 def extractMovieUrl(query):
     url = goog_url + qp(query)
     try :
@@ -28,25 +31,25 @@ def extractMovieUrl(query):
 
 def listSongs(query):
     mov_url=extractMovieUrl(query)
-    print "URL : ",mov_url
+    print "URL","   : ",colored(mov_url,'green')
     url = mov_url + "soundtrack"
     req = requests.get(url)
     result = req.content
     soup = bs(result)
     movie_name=soup.find("h3",{"itemprop":"name"}).text
-    print "MOVIE : ",movie_name
+    print "MOVIE"," : ",colored(movie_name,'magenta')
     names=[]
     for song in soup.findAll("div", {"id" : re.compile('sn[0-9]*')}):
         text = song.contents
         name_list = []
-        name_list.append(text[0])
+        name_list.append(text[0].encode('utf-8'))
         name=''
         for i in text:
             if isinstance(i,BeautifulSoup.Tag):
-		        name+=i.text.encode('utf-8')
+		        name+=i.text.decode('utf-8')
             elif isinstance(i,BeautifulSoup.NavigableString):
 		        name+=str(i).decode('utf-8')
-        name_list.append(name)
+        name_list.append(name.encode('utf-8'))
         name_list.append(movie_name)
         #print "Title : ",name_list[0],"\nDescription : \n",name_list[1]
         names.append(name_list)
@@ -54,22 +57,36 @@ def listSongs(query):
 
 def youtubeSearch(names):
     links=[]
+    print "\nSONGS"
     for name in names:
         query = ''
-        query+=name[0].encode('utf-8')
-        query=searchFor(query,name[1],'Written by (.*)')
+        query+=name[0]
+        query=searchFor(query,name[1],'Performed by (.*)')
+        #query=searchFor(query,name[1],'Written by (.*)')
         query=searchFor(query,name[1],'Written and Performed by (.*)')
         query=searchFor(query,name[1],'from the motion picture (.*)')
         query=searchFor(query,name[1],'Music by (.*)')
         query=searchFor(query,name[1],'Composed by (.*)')
         #query+=name[2].encode('utf-8')
+        query.decode('utf-8')
         req=requests.get(you_url+qp(query))
         result=req.content
         link_start=result.find('/watch?v=')
         link_end=result.find('"',link_start+1)
         link='www.youtube.com'+result[link_start:link_end]
-        print name[0]," : ",result[link_start:link_end]
-        print query,'\n'
+        if not debug:
+            if result[link_start:link_end] is not '':
+                print "{:<45} : {:<30}".format(name[0],colored(result[link_start:link_end],'green'))
+            else:
+                print "{:<45}".format(name[0]),": ", colored("Not found",'red')
+        else:
+            if result[link_start:link_end] is not '':
+                print "{:<45} : {:<30}".format(name[0],colored(result[link_start:link_end],'green'))
+                print "Search query : ",query,"\n"
+            else:
+                print "{:<45}".format(name[0]),": ", colored("Not found",'red')
+                print "Search query : ",query,"\n"
+
 
 
 
@@ -78,9 +95,12 @@ def searchFor(query,text,reg):
     query+=' '
     r = re.search(reg,text)
     if r is not None:
-        query+=r.group(1).encode('utf-8')
+        query+=re.sub('\(.*\)','',r.group(1).encode('utf-8'))    
     return query
 
 
-name=raw_input("Enter the Name of a Movie : ")
-youtubeSearch(listSongs(name))
+movie_query= ' '.join(sys.argv[1:])
+if movie_query.find('-d')>=0:
+    debug=True
+    movie_query=movie_query.replace('-d','')
+youtubeSearch(listSongs(movie_query))
