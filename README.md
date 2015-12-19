@@ -4,7 +4,7 @@ Download the entire soundtrack of any movie :man_with_turban:
 
 
 
-> **yodel** Me and Earl and The Dying Girl
+> $ **```yodel```** ```Me and Earl and The Dying Girl```
 
 Yes, it's that simple.
 
