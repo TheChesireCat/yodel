@@ -33,7 +33,8 @@ def listSongs(query):
     req = requests.get(url)
     result = req.content
     soup = bs(result)
-    print "MOVIE : ",soup.find("h3",{"itemprop":"name"}).text
+    movie_name=soup.find("h3",{"itemprop":"name"}).text
+    print "MOVIE : ",movie_name
     names=[]
     for song in soup.findAll("div", {"id" : re.compile('sn[0-9]*')}):
         text = song.contents
@@ -44,11 +45,42 @@ def listSongs(query):
             if isinstance(i,BeautifulSoup.Tag):
 		        name+=i.text.encode('utf-8')
             elif isinstance(i,BeautifulSoup.NavigableString):
-		        name+=str(i).encode('utf-8')
+		        name+=str(i).decode('utf-8')
         name_list.append(name)
+        name_list.append(movie_name)
         #print "Title : ",name_list[0],"\nDescription : \n",name_list[1]
         names.append(name_list)
     return names
+
+def youtubeSearch(names):
+    links=[]
+    for name in names:
+        query = ''
+        query+=name[0].encode('utf-8')
+        query=searchFor(query,name[1],'Written by (.*)')
+        query=searchFor(query,name[1],'Written and Performed by (.*)')
+        query=searchFor(query,name[1],'from the motion picture (.*)')
+        query=searchFor(query,name[1],'Music by (.*)')
+        query=searchFor(query,name[1],'Composed by (.*)')
+        #query+=name[2].encode('utf-8')
+        req=requests.get(you_url+qp(query))
+        result=req.content
+        link_start=result.find('/watch?v=')
+        link_end=result.find('"',link_start+1)
+        link='www.youtube.com'+result[link_start:link_end]
+        print name[0]," : ",result[link_start:link_end]
+        print query,'\n'
+
+
+
+
+def searchFor(query,text,reg):
+    query+=' '
+    r = re.search(reg,text)
+    if r is not None:
+        query+=r.group(1).encode('utf-8')
+    return query
+
+
 name=raw_input("Enter the Name of a Movie : ")
-for index,song in enumerate(listSongs(name)):
-    print "[{:^3}] {}".format(index+1,song[0].encode('utf-8'))
+youtubeSearch(listSongs(name))
