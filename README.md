@@ -7,3 +7,5 @@ Yes, it's that simple.
 ```bash
 $ yodel "Me and Earl and The Dying Girl"
 ```
+
+<sup><sub>Made with ♥️ by Ankit Ramakrishnan</sub></sup>

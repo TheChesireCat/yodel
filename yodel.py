@@ -35,7 +35,7 @@ def listSongs(query):
     for song in soup.findAll("div", {"id" : re.compile('sn[0-9]*')}):
         text = song.contents
         name_list = []
-        name_list.append(i[0])
+        name_list.append(text[0])
         name=''
         for i in text:
             if isinstance(i,BeautifulSoup.Tag):
