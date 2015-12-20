@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-#version 1.0
+# version 1.0
+# Author Ankit Ramakrishnan
+# email : aliceoxenbury@gmail.com
 import re
 from colorama import init
 from termcolor import colored
