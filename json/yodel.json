@@ -1,0 +1,20 @@
+{
+  "movie_name":"The Godfather",
+  "imdb_link":"",
+  "number_of_songs":32,
+  "album_art":"link",
+  "songs":[
+    {
+      "track_no":1,
+      "track_name":"Latino",
+      "youtube querry":"",
+      "youtube_link":"",
+    },
+    {
+      "track_no":2,
+      "track_name":"DJ",
+      "youtube querry":"",
+      "youtube_link":"",
+    }
+  ]
+}

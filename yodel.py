@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#version 1.0
 import re
 from colorama import init
 from termcolor import colored
