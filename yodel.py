@@ -2,15 +2,12 @@
 # version 1.0
 # Author Ankit Ramakrishnan
 # email : aliceoxenbury@gmail.com
-import re
-from colorama import init
-from termcolor import colored
-import os
-init()
-import sys
+import os, sys, re
 import requests
-from BeautifulSoup import BeautifulSoup as bs
+import json
 import BeautifulSoup
+from requests import *
+from BeautifulSoup import BeautifulSoup as bs
 if (sys.version_info > (3,0)):
     from urllib.request import urlopen
     from urllib.parse import quote_plus as qp
@@ -18,114 +15,105 @@ if (sys.version_info > (3,0)):
 else:
     from urllib2 import urlopen
     from urllib import quote_plus as qp
+
 goog_url = "http://www.google.com/search?q="
 you_url="https://www.youtube.com/results?search_query="
-debug=False
-def extractMovieUrl(query):
-    url = goog_url + qp(query)
-    try :
-        req = requests.get(url)
-        result = req.content
-        link_start = result.find("http://www.imdb.com")
-        link_end = result.find("&amp",link_start)
-        link = result[link_start:link_end]
-        return link
-    except requests.exceptions.ConnectionError:
-        print "Not Connected to the Internet, Please check your connection. :(\n\nNon verbose errors may follow\nERRORS :\n"
 
-def listSongs(query):
-    mov_url=extractMovieUrl(query)
-    print "URL","   : ",colored(mov_url,'green')
-    url = mov_url + "soundtrack"
-    req = requests.get(url)
-    result = req.content
+def generateJSON(query):
+    info=dict()
+    url = goog_url + qp(query)
+    info["search_url"]=url
+    #try:
+    result = requests.get(url).content
+    link_start = result.find("http://www.imdb.com")
+    link_end = result.find("&amp",link_start)
+    link = result[link_start:link_end]
+    info["imdb_url"]=link
+    # except :
+    #     print """ Not connected to the Internet
+    #               Please check your Internet Connection
+    #
+    #               Stopping"""
+    #     return 1
+    url = link + "soundtrack"
+    info["soundtrack_url"]=url
+    result=requests.get(url).content
     soup = bs(result)
-    movie_name=soup.find("h3",{"itemprop":"name"}).text
-    print "MOVIE"," : ",colored(movie_name,'magenta')
-    names=[]
-    for song in soup.findAll("div", {"id" : re.compile('sn[0-9]*')}):
+    movie_name = soup.find("h3",{"itemprop":"name"}).text
+    info["movie_name"]=movie_name
+    songs=[]
+    songs_list = soup.findAll("div", {"id" : re.compile('sn[0-9]*')})
+    info["number_of_songs"]=len(songs_list)
+    for idx,song in enumerate(songs_list):
+        fraction = ((idx+1)*1.0)/len(songs_list)
+        complete = int(fraction*30)
+        empty=30 - complete
+        progress_bar = "["+"#"*complete+"."*empty+"] {}%".format(int(fraction*100))
+        message = "\rGenerating JSON string : "
+        progress_message=message+progress_bar
+        sys.stdout.write(progress_message)
+        sys.stdout.flush()
+        song_info=dict()
         text = song.contents
-        name_list = []
-        name_list.append(text[0].encode('utf-8'))
-        name=''
+        song_info["track_no"]=idx
+        song_info["song_name"]=text[0]
+        text_blurb=''
         for i in text:
             if isinstance(i,BeautifulSoup.Tag):
-		        name+=i.text.decode('utf-8')
+		        text_blurb+=i.text.encode('utf-8')
             elif isinstance(i,BeautifulSoup.NavigableString):
-		        name+=str(i).decode('utf-8')
-        name_list.append(name.encode('utf-8'))
-        name_list.append(movie_name)
-        #print "Title : ",name_list[0],"\nDescription : \n",name_list[1]
-        names.append(name_list)
-    return names
-
-def youtubeSearch(names):
-    links=[]
-    print "\nSONGS"
-    for idx,name in enumerate(names):
-        query = ''
-        query+=name[0]
-        query=searchFor(query,name[1],'Performed by (.*)')
-        #query=searchFor(query,name[1],'Written by (.*)')
-        query=searchFor(query,name[1],'Written and Performed by (.*)')
-        query=searchFor(query,name[1],'from the motion picture (.*)')
-        query=searchFor(query,name[1],'Music by (.*)')
-        query=searchFor(query,name[1],'Composed by (.*)')
-        #query+=name[2].encode('utf-8')
-        query.decode('utf-8')
-        req=requests.get(you_url+qp(query))
-        result=req.content
+		        text_blurb+=str(i)
+        song_info["text_blurb"]=text_blurb
+        query=''
+        query+=text[0]
+        r = re.search('Performed by (.*)',text_blurb)
+        if r is not None:
+            song_info["performed_by"]=r.group(1)
+            query=query+' '+r.group(1)
+        else :
+            song_info["performed_by"]=""
+        r = re.search('Written and Performed by (.*)',text_blurb)
+        if r is not None:
+            song_info["written_and_performed_by"]=r.group(1)
+            query=query+' '+r.group(1)
+        else :
+            song_info["written_and_performed_by"]=""
+        r = re.search('from the motion picture (.*)',text_blurb)
+        if r is not None:
+            song_info["motion_picture"]=r.group(1)
+            query=query+' '+r.group(1)
+        else :
+            song_info["motion_picture"]=""
+        r = re.search('Music by (.*)',text_blurb)
+        if r is not None:
+            song_info["music_by"]=r.group(1)
+            query=query+' '+r.group(1)
+        else :
+            song_info["music_by"]=""
+        r = re.search('Composed by (.*)',text_blurb)
+        if r is not None:
+            song_info["composed_by"]=r.group(1)
+            query=query+' '+r.group(1)
+        else :
+            song_info["composed_by"]=""
+        query.encode('utf-8')
+        result=requests.get(you_url+query).content
         link_start=result.find('/watch?v=')
         link_end=result.find('"',link_start+1)
-        link='www.youtube.com'+result[link_start:link_end]
-        if not debug:
-            if result[link_start:link_end] is not '':
-                print "[{:<3}] {:<45} : {:<30}".format(idx,name[0],colored(result[link_start:link_end],'green'))
-            else:
-                print "[{:<3}] {:<45}".format(idx,name[0]),": ", colored("Not found",'red')
+        uri=result[link_start:link_end]
+        if uri is not '':
+            link='http://www.youtube.com'+uri
         else:
-            if result[link_start:link_end] is not '':
-                print "[{:<3}] {:<45} : {:<30}".format(idx,name[0],colored(result[link_start:link_end],'green'))
-                print "Search query : ",query,"\n"
-            else:
-                print "[{:<3}] {:<45}".format(idx,name[0]),": ", colored("Not found",'red')
-                print "Search query : ",query,"\n"
-        links.append([name[0],link])
-    print len(links)
-    return links
-
-def downloadAndTag(links):
-    command_tokens = [
-    'youtube-dl',
-    '--extract-audio',
-    '--audio-format mp3',
-    '--audio-quality 0',
-    '--output '
-    ]
-    for name,link in links:
-        if link is not '':
-            command=' '.join(command_tokens)
-            command=command+"\""+name+".%(ext)s\" "+link
-            print command
-            print "Downloading : ",name
-            os.system(command)
-
-
-
-
-
-
-
-def searchFor(query,text,reg):
-    query+=' '
-    r = re.search(reg,text)
-    if r is not None:
-        query+=re.sub('\(.*\)','',r.group(1).encode('utf-8'))
-    return query
-
+            link=""
+        song_info["youtube_url"]=link
+        song_info["query"]=query
+        songs.append(song_info)
+    info["songs"]=songs
+    info["file_name"]=info["movie_name"]+".json"
+    with open(info['file_name'],'w') as outfile:
+        outfile.write(json.dumps(info, indent=4,sort_keys=True))
+    return json.dumps(info)
 
 movie_query= ' '.join(sys.argv[1:])
-if movie_query.find('-d')>=0:
-    debug=True
-    movie_query=movie_query.replace('-d','')
-downloadAndTag(youtubeSearch(listSongs(movie_query)))
+
+generateJSON(movie_query)
