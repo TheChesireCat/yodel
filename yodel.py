@@ -69,31 +69,31 @@ def generateJSON(query):
         r = re.search('Performed by (.*)',text_blurb)
         if r is not None:
             song_info["performed_by"]=r.group(1)
-            query=query+' '+r.group(1)
+            query=query+' '+r.group(1).decode('utf-8')
         else :
             song_info["performed_by"]=""
         r = re.search('Written and Performed by (.*)',text_blurb)
         if r is not None:
             song_info["written_and_performed_by"]=r.group(1)
-            query=query+' '+r.group(1)
+            query=query+' '+r.group(1).decode('utf-8')
         else :
             song_info["written_and_performed_by"]=""
         r = re.search('from the motion picture (.*)',text_blurb)
         if r is not None:
             song_info["motion_picture"]=r.group(1)
-            query=query+' '+r.group(1)
+            query=query+' '+r.group(1).decode('utf-8')
         else :
             song_info["motion_picture"]=""
         r = re.search('Music by (.*)',text_blurb)
         if r is not None:
             song_info["music_by"]=r.group(1)
-            query=query+' '+r.group(1)
+            query=query+' '+r.group(1).decode('utf-8')
         else :
             song_info["music_by"]=""
         r = re.search('Composed by (.*)',text_blurb)
         if r is not None:
             song_info["composed_by"]=r.group(1)
-            query=query+' '+r.group(1)
+            query=query+' '+r.group(1).decode('utf-8')
         else :
             song_info["composed_by"]=""
         query.encode('utf-8')
@@ -110,7 +110,7 @@ def generateJSON(query):
         songs.append(song_info)
     info["songs"]=songs
     info["file_name"]=info["movie_name"]+".json"
-    with open(info['file_name'],'w') as outfile:
+    with open("json/"+info['file_name'],'w') as outfile:
         outfile.write(json.dumps(info, indent=4,sort_keys=True))
     return json.dumps(info)
 
