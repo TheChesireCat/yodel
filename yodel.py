@@ -2,6 +2,7 @@
 import re
 from colorama import init
 from termcolor import colored
+import os
 init()
 import sys
 import requests
@@ -58,7 +59,7 @@ def listSongs(query):
 def youtubeSearch(names):
     links=[]
     print "\nSONGS"
-    for name in names:
+    for idx,name in enumerate(names):
         query = ''
         query+=name[0]
         query=searchFor(query,name[1],'Performed by (.*)')
@@ -76,16 +77,37 @@ def youtubeSearch(names):
         link='www.youtube.com'+result[link_start:link_end]
         if not debug:
             if result[link_start:link_end] is not '':
-                print "{:<45} : {:<30}".format(name[0],colored(result[link_start:link_end],'green'))
+                print "[{:<3}] {:<45} : {:<30}".format(idx,name[0],colored(result[link_start:link_end],'green'))
             else:
-                print "{:<45}".format(name[0]),": ", colored("Not found",'red')
+                print "[{:<3}] {:<45}".format(idx,name[0]),": ", colored("Not found",'red')
         else:
             if result[link_start:link_end] is not '':
-                print "{:<45} : {:<30}".format(name[0],colored(result[link_start:link_end],'green'))
+                print "[{:<3}] {:<45} : {:<30}".format(idx,name[0],colored(result[link_start:link_end],'green'))
                 print "Search query : ",query,"\n"
             else:
-                print "{:<45}".format(name[0]),": ", colored("Not found",'red')
+                print "[{:<3}] {:<45}".format(idx,name[0]),": ", colored("Not found",'red')
                 print "Search query : ",query,"\n"
+        links.append([name[0],link])
+    print len(links)
+    return links
+
+def downloadAndTag(links):
+    command_tokens = [
+    'youtube-dl',
+    '--extract-audio',
+    '--audio-format mp3',
+    '--audio-quality 0',
+    '--output '
+    ]
+    for name,link in links:
+        if link is not '':
+            command=' '.join(command_tokens)
+            command=command+"\""+name+".%(ext)s\" "+link
+            print command
+            print "Downloading : ",name
+            os.system(command)
+
+
 
 
 
@@ -103,4 +125,4 @@ movie_query= ' '.join(sys.argv[1:])
 if movie_query.find('-d')>=0:
     debug=True
     movie_query=movie_query.replace('-d','')
-youtubeSearch(listSongs(movie_query))
+downloadAndTag(youtubeSearch(listSongs(movie_query)))
