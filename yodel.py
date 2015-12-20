@@ -55,7 +55,7 @@ def generateJSON(query):
         sys.stdout.flush()
         song_info=dict()
         text = song.contents
-        song_info["track_no"]=idx
+        song_info["track_no"]=idx+1
         song_info["song_name"]=text[0]
         text_blurb=''
         for i in text:
