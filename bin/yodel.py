@@ -110,10 +110,32 @@ def generateJSON(query):
         songs.append(song_info)
     info["songs"]=songs
     info["file_name"]=info["movie_name"]+".json"
-    with open("json/"+info['file_name'],'w') as outfile:
+    with open("../json/"+info['file_name'],'w') as outfile:
         outfile.write(json.dumps(info, indent=4,sort_keys=True))
     return json.dumps(info)
 
-movie_query= ' '.join(sys.argv[1:])
+def main():
+    """
+    Main program
+    """
+    movie_query= ' '.join(sys.argv[1:])
+    info=generateJSON(movie_query)
+    info=json.loads(info)
+    sys.stdout.write('\n')
+    print "yodel!   : ",info["movie_name"]
+    print "imdb url : ",info["imdb_url"]
+    command_arguments = [
+    'youtube-dl',
+    '--extract-audio',
+    '--audio-quality 9',
+    '--output '
+    ]
+    for song in info["songs"]:
+        command = ' '.join(command_arguments)
+        command = command+"\""+song["song_name"]+".%(ext)s\" "+song["youtube_url"]
+        #print command
+        os.system(command)
 
-generateJSON(movie_query)
+
+if __name__ == '__main__':
+    main()
