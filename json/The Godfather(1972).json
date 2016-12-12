@@ -2,7 +2,7 @@
     "file_name": "The Godfather(1972).json", 
     "imdb_url": "http://www.imdb.com/title/tt0068646/", 
     "movie_name": "The Godfather(1972)", 
-    "number_of_songs": 15, 
+    "number_of_songs": 16, 
     "search_url": "http://www.google.com/search?q=The+Godfather", 
     "songs": [
         {
@@ -63,7 +63,7 @@
             "text_blurb": "Have Yourself a Merry Little Christmas\n(1944)\nWritten by Hugh Martin and Ralph Blane\nPerformed by Al Martino (uncredited)\n", 
             "track_no": 5, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=nZ6yQgBvuoI"
+            "youtube_url": "http://www.youtube.com/watch?v=v3V1QogSX5U&amp;list=PLfZ2Z-krpIHuTVw9Ua5XGxjAR84L39nMJ"
         }, 
         {
             "composed_by": "", 
@@ -75,7 +75,7 @@
             "text_blurb": "Santa Claus Is Coming To Town\n(1934)\nWritten by Haven Gillespie, J. Fred Coots\n", 
             "track_no": 6, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=RjoMqFlc5zQ"
+            "youtube_url": "http://www.youtube.com/watch?v=PJ2CuKgyNW0"
         }, 
         {
             "composed_by": "", 
@@ -87,7 +87,7 @@
             "text_blurb": "The Bells of St. Mary's\n(1971)\nMusic by A. Emmett Adams (as A.E. Adams)\nLyrics by Douglas Furber\n", 
             "track_no": 7, 
             "written_and_performed_by": "", 
-            "youtube_url": ""
+            "youtube_url": "http://www.youtube.com/watch?v=-TigZforXIY"
         }, 
         {
             "composed_by": "", 
@@ -123,7 +123,7 @@
             "text_blurb": "Passacaglia and Fugue in C minor\n(1706? - 1713?)\n(Baptism sequence)\nMusic by Johann Sebastian Bach\n", 
             "track_no": 10, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=F51uHpH3yQk"
+            "youtube_url": "http://www.youtube.com/watch?v=HtFMxFQrKc4"
         }, 
         {
             "composed_by": "", 
@@ -135,7 +135,7 @@
             "text_blurb": "Non so pi\u00f9\n(1786) (uncredited)\n(Cherubino's Aria) from opera \"Le nozze di Figaro\" Act I, Scene V Music by Wolfgang Amadeus Mozart\nLibretto by Lorenzo da Ponte\n", 
             "track_no": 11, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=JZbByYB5GNg"
+            "youtube_url": "http://www.youtube.com/watch?v=nU0hJ5bcokk"
         }, 
         {
             "composed_by": "", 
@@ -159,7 +159,7 @@
             "text_blurb": "This Loneliness\n(1972) (uncredited)\nWritten and Performed by Carmine Coppola\n", 
             "track_no": 13, 
             "written_and_performed_by": "Carmine Coppola", 
-            "youtube_url": "http://www.youtube.com/watch?v=oqI2NaOYDW4"
+            "youtube_url": "http://www.youtube.com/watch?v=wC2cu8YIOdM"
         }, 
         {
             "composed_by": "", 
@@ -184,6 +184,18 @@
             "track_no": 15, 
             "written_and_performed_by": "", 
             "youtube_url": "http://www.youtube.com/watch?v=2rpd1riZZ1g"
+        }, 
+        {
+            "composed_by": "", 
+            "motion_picture": "", 
+            "music_by": "", 
+            "performed_by": "", 
+            "query": "Solid Potato Salad", 
+            "song_name": "Solid Potato Salad", 
+            "text_blurb": "Solid Potato Salad\n(uncredited)\nWritten by Don Raye and Gene de Paul\n", 
+            "track_no": 16, 
+            "written_and_performed_by": "", 
+            "youtube_url": "http://www.youtube.com/watch?v=d1J3NLNWAPU"
         }
     ], 
     "soundtrack_url": "http://www.imdb.com/title/tt0068646/soundtrack"

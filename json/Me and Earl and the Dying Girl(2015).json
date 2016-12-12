@@ -2,8 +2,8 @@
     "file_name": "Me and Earl and the Dying Girl(2015).json", 
     "imdb_url": "http://www.imdb.com/title/tt2582496/", 
     "movie_name": "Me and Earl and the Dying Girl(2015)", 
-    "number_of_songs": 34, 
-    "search_url": "http://www.google.com/search?q=Me+and+Earl+and+the+dying+girl", 
+    "number_of_songs": 33, 
+    "search_url": "http://www.google.com/search?q=Me+And+Earl+And+The+Dying+Girl", 
     "songs": [
         {
             "composed_by": "", 
@@ -15,7 +15,7 @@
             "text_blurb": "Jubilate, O Amoeni Chori, RV 639\nWritten by Antonio Vivaldi\nPerformed by Aradia Ensemble and Chorus, Conducted by Kevin Mallon\nCourtesy of Naxos\nBy arrangement with Source/Q\n", 
             "track_no": 1, 
             "written_and_performed_by": "", 
-            "youtube_url": ""
+            "youtube_url": "http://www.youtube.com/watch?v=uAHoOrb5mBY"
         }, 
         {
             "composed_by": "", 
@@ -27,7 +27,7 @@
             "text_blurb": "Scene D'Amour\nfrom the motion picture Vertigo (1958)\nWritten and Performed by Bernard Herrmann\nCourtesy of Universal Studios\n", 
             "track_no": 2, 
             "written_and_performed_by": "Bernard Herrmann", 
-            "youtube_url": "http://www.youtube.com/watch?v=R_6euCUJ0Tg"
+            "youtube_url": "http://www.youtube.com/watch?v=n9VrXvfXU1Y"
         }, 
         {
             "composed_by": "", 
@@ -51,7 +51,7 @@
             "text_blurb": "Dead Finks Don't Talk\nWritten by Brian Eno and Paul Thompson\nPerformed by Brian Eno\nCourtesy of Virgin Records Ltd\nUnder license from Universal Music Enterprises\n", 
             "track_no": 4, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=vmlC-9dDMk4"
+            "youtube_url": "http://www.youtube.com/watch?v=u7BDS19H9OM"
         }, 
         {
             "composed_by": "", 
@@ -111,7 +111,7 @@
             "text_blurb": "Street Hassle\nWritten and Performed by Lou Reed\nCourtesy of RCA Records\nBy arrangement with Sony Music Licensing\n", 
             "track_no": 9, 
             "written_and_performed_by": "Lou Reed", 
-            "youtube_url": "http://www.youtube.com/watch?v=bkG9BKgDvNI"
+            "youtube_url": "http://www.youtube.com/watch?v=TgaGcRcsyWc"
         }, 
         {
             "composed_by": "", 
@@ -129,13 +129,13 @@
             "composed_by": "", 
             "motion_picture": "", 
             "music_by": "", 
-            "performed_by": "Cologne Chamber Orchestra and Dresden Chamber Choir, Conducted by Helmut M\u00fcller-Br\u00fchl", 
-            "query": "Mass in B Minor, BWV 232 Cologne Chamber Orchestra and Dresden Chamber Choir, Conducted by Helmut M\u00fcller-Br\u00fchl", 
-            "song_name": "Mass in B Minor, BWV 232", 
-            "text_blurb": "Mass in B Minor, BWV 232\nWritten by Johann Sebastian Bach (as J.S. Bach)\nPerformed by Cologne Chamber Orchestra and Dresden Chamber Choir, Conducted by Helmut M\u00fcller-Br\u00fchl\nCourtesy of Naxos\nBy arrangement with Source/Q\n", 
+            "performed_by": "K\u00f6lner Kammerorchester and Dresden Chamber Choir, Conducted by Helmut M\u00fcller-Br\u00fchl", 
+            "query": "Mass in B Minor, BWV 232 - Crucifixus K\u00f6lner Kammerorchester and Dresden Chamber Choir, Conducted by Helmut M\u00fcller-Br\u00fchl", 
+            "song_name": "Mass in B Minor, BWV 232 - Crucifixus", 
+            "text_blurb": "Mass in B Minor, BWV 232 - Crucifixus\nWritten by Johann Sebastian Bach (as J.S. Bach)\nPerformed by K\u00f6lner Kammerorchester and Dresden Chamber Choir, Conducted by Helmut M\u00fcller-Br\u00fchl\nCourtesy of Naxos\nBy arrangement with Source/Q\n", 
             "track_no": 11, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=y-18Jup0m0U"
+            "youtube_url": ""
         }, 
         {
             "composed_by": "", 
@@ -171,19 +171,19 @@
             "text_blurb": "In Dreams\nWritten and Performed by Roy Orbison\nCourtesy of Sony Music Entertainment\nBy arrangement with Sony Music Licensing\n", 
             "track_no": 14, 
             "written_and_performed_by": "Roy Orbison", 
-            "youtube_url": "http://www.youtube.com/watch?v=MVRunwyoTMA"
+            "youtube_url": "http://www.youtube.com/watch?v=TPqZs7Vl_xg"
         }, 
         {
             "composed_by": "", 
             "motion_picture": "", 
             "music_by": "", 
-            "performed_by": "Cluster &amp; Eno", 
-            "query": "Ho Renomo Cluster &amp; Eno", 
+            "performed_by": "Cluster &amp; Brian Eno (as Eno)", 
+            "query": "Ho Renomo Cluster &amp; Brian Eno (as Eno)", 
             "song_name": "Ho Renomo", 
-            "text_blurb": "Ho Renomo\nWritten by Brian Eno, Dieter Moebius and Hans-Joachim Roedelius\nPerformed by Cluster &amp; Eno\nCourtesy of Bureau B/Sky Records\n", 
+            "text_blurb": "Ho Renomo\nWritten by Brian Eno, Dieter Moebius and Hans-Joachim Roedelius\nPerformed by Cluster &amp; Brian Eno (as Eno)\nCourtesy of Bureau B/Sky Records\n", 
             "track_no": 15, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=kfv8WeA-Vn4"
+            "youtube_url": "http://www.youtube.com/watch?v=7eaMUhkrJ5Y"
         }, 
         {
             "composed_by": "", 
@@ -195,7 +195,7 @@
             "text_blurb": "Kartoffeltornado\nWritten by James Harrell\nPerformed by Lythion Music\n", 
             "track_no": 16, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=pkcJEvMcnEg"
+            "youtube_url": "http://www.youtube.com/watch?v=oh-YHj-bgmA"
         }, 
         {
             "composed_by": "", 
@@ -291,7 +291,7 @@
             "text_blurb": "Minuetto 'Jeux D'Enfance'\nfrom the motion picture _Red Like the Sky (2006)_\nWritten and Performed by Ezio Bosso\nCourtesy of Creazioni Artistiche Musicale C.A.M. Srl\nUnder license from Sugar Melodi, Inc.\n", 
             "track_no": 24, 
             "written_and_performed_by": "Ezio Bosso", 
-            "youtube_url": ""
+            "youtube_url": "http://www.youtube.com/watch?v=aJChQllh088&amp;list=PLLrMrZkT960ZYR-panA6-iyTj8-WS3sC6"
         }, 
         {
             "composed_by": "", 
@@ -303,7 +303,7 @@
             "text_blurb": "Here Come the Warm Jets\nWritten and Performed by Brian Eno\nCourtesy of Virgin Records Ltd\nUnder license from Universal Music Enterprises\n", 
             "track_no": 25, 
             "written_and_performed_by": "Brian Eno", 
-            "youtube_url": "http://www.youtube.com/watch?v=PAqc54h9YU8&amp;list=PLPaztBWnatciWbMvnF7Rn7eV7Lyz9NTpr"
+            "youtube_url": "http://www.youtube.com/watch?v=efnAzvDw_nw"
         }, 
         {
             "composed_by": "", 
@@ -315,7 +315,7 @@
             "text_blurb": "Burn the Cat\nWritten by Tim Booth, Jim Glennie (as James Glennie), Larry Gott (as Lawrence Gott), Mark Hunter, Saul Davies, Dave Baynton-Power (as David Baynton-Power) and Brian Eno\nPerformed by James featuring Brian Eno\nCourtesy of Mercury Records Limited\nUnder license from Universal Music Enterprises\n", 
             "track_no": 26, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=OEJgiqHUfFI&amp;list=PLVTqAYO7ebYxFCwD2Fkdym-bAAfztVhka"
+            "youtube_url": "http://www.youtube.com/watch?v=W1u4YV-Iqx4"
         }, 
         {
             "composed_by": "", 
@@ -351,7 +351,7 @@
             "text_blurb": "LSD\nWritten and Performed by Landon Thomas\n", 
             "track_no": 29, 
             "written_and_performed_by": "Landon Thomas", 
-            "youtube_url": "http://www.youtube.com/watch?v=TcpwcVrPUms&amp;list=PLAU7tQTsg15deHiTFmSKNjznAycf-j6U8"
+            "youtube_url": "http://www.youtube.com/watch?v=TcpwcVrPUms"
         }, 
         {
             "composed_by": "", 
@@ -363,7 +363,7 @@
             "text_blurb": "Dance with Me\nWritten by Milo Bonacci, Wesley Miles, Mathieu Santos, Rebecca Zeller and Dennis Herring\nPerformed by Ra Ra Riot\nCourtesy of Barsuk Records\nBy arrangement with Bank Robber Music\n", 
             "track_no": 30, 
             "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=XSwc0HxnasI"
+            "youtube_url": "http://www.youtube.com/watch?v=zp8CqqY-OYg"
         }, 
         {
             "composed_by": "", 
@@ -375,7 +375,7 @@
             "text_blurb": "The Big Ship\nWritten and Performed by Brian Eno\nCourtesy of Virgin Records Ltd\nUnder license from Universal Music Enterprises\n", 
             "track_no": 31, 
             "written_and_performed_by": "Brian Eno", 
-            "youtube_url": "http://www.youtube.com/watch?v=HOvVaBsl1F4"
+            "youtube_url": "http://www.youtube.com/watch?v=lCCJc_V8_MQ"
         }, 
         {
             "composed_by": "", 
@@ -400,18 +400,6 @@
             "track_no": 33, 
             "written_and_performed_by": "", 
             "youtube_url": "http://www.youtube.com/watch?v=XkclIDu9K5c"
-        }, 
-        {
-            "composed_by": "", 
-            "motion_picture": "", 
-            "music_by": "", 
-            "performed_by": "Harry Nilsson", 
-            "query": "Everybody's Talkin Harry Nilsson", 
-            "song_name": "Everybody's Talkin", 
-            "text_blurb": "Everybody's Talkin\nWritten by Fred Neil\nPerformed by Harry Nilsson\n", 
-            "track_no": 34, 
-            "written_and_performed_by": "", 
-            "youtube_url": "http://www.youtube.com/watch?v=2AzEY6ZqkuE"
         }
     ], 
     "soundtrack_url": "http://www.imdb.com/title/tt2582496/soundtrack"

@@ -6,6 +6,7 @@ import os, sys, re
 import requests
 import json
 import BeautifulSoup
+import youtube_dl
 from requests import *
 from BeautifulSoup import BeautifulSoup as bs
 if (sys.version_info > (3,0)):
@@ -18,6 +19,20 @@ else:
 
 goog_url = "http://www.google.com/search?q="
 you_url="https://www.youtube.com/results?search_query="
+
+def my_hook(d):
+    if d['status'] == 'finished':
+        print('Done downloading, now converting ...')
+
+class MyLogger(object):
+    def debug(self, msg):
+        pass
+
+    def warning(self, msg):
+        pass
+
+    def error(self, msg):
+        print(msg)
 
 def generateJSON(query):
     info=dict()
@@ -114,6 +129,18 @@ def generateJSON(query):
         outfile.write(json.dumps(info, indent=4,sort_keys=True))
     return json.dumps(info)
 
+ydl_opts = {
+    'format': 'bestaudio/best',
+    'postprocessors': [{
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'mp3',
+        'preferredquality': '192',
+    }],
+    'progress_hooks': [my_hook],
+}
+
+
+        
 def main():
     """
     Main program
@@ -128,13 +155,14 @@ def main():
     'youtube-dl',
     '--extract-audio',
     '--audio-quality 9',
-    '--output '
+    '--output ',
+    '--audio-format.%(mp3)s'
     ]
     for song in info["songs"]:
-        command = ' '.join(command_arguments)
-        command = command+"\""+song["song_name"]+".%(ext)s\" "+song["youtube_url"]
-        #print command
-        os.system(command)
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([song['youtube_url']])
+        
+
 
 
 if __name__ == '__main__':
