@@ -13,4 +13,4 @@ Yes, it's that simple.
 * saves JSON file to json directory
 * added progress bar
 
-<sup><sub>Made with ♥️ by Ankit Ramakrishnan</sub></sup>
+<sup><sub>Made with ♥️ by TheChesireCat</sub></sup>
